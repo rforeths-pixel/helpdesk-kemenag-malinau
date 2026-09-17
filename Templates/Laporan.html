@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="form-container">
+
+    <h2>Form Pelaporan Masalah IT</h2>
+
+    <form method="POST" id="formLaporan">
+
+        <label>Nama Pelapor</label>
+
+        <input
+            type="text"
+            name="nama"
+            placeholder="Masukkan nama"
+            required
+        >
+
+
+        <label>Kategori Masalah</label>
+
+        <select name="kategori" required>
+
+            <option value="">
+                -- Pilih Kategori --
+            </option>
+
+            <option value="Komputer">
+                Komputer
+            </option>
+
+            <option value="Printer">
+                Printer
+            </option>
+
+            <option value="Internet">
+                Internet
+            </option>
+
+            <option value="Jaringan">
+                Jaringan
+            </option>
+
+            <option value="Akun">
+                Akun / Login
+            </option>
+
+            <option value="Lainnya">
+                Lainnya
+            </option>
+
+        </select>
+
+
+        <label>Judul Masalah</label>
+
+        <input
+            type="text"
+            name="judul"
+            placeholder="Contoh: Printer tidak dapat mencetak"
+            required
+        >
+
+
+        <label>Deskripsi Masalah</label>
+
+        <textarea
+            name="deskripsi"
+            rows="6"
+            placeholder="Jelaskan masalah yang dialami..."
+            required
+        ></textarea>
+
+
+        <label>Prioritas</label>
+
+        <select name="prioritas" required>
+
+            <option value="Rendah">
+                Rendah
+            </option>
+
+            <option value="Sedang">
+                Sedang
+            </option>
+
+            <option value="Tinggi">
+                Tinggi
+            </option>
+
+        </select>
+
+
+        <button type="submit">
+            Kirim Laporan
+        </button>
+
+    </form>
+
+</div>
+
+
+{% endblock %}

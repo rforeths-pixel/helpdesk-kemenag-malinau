@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Helpdesk IT Kemenag Malinau</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<nav>
+    <div class="header-kemenag">
+
+        <img 
+            src="{{ url_for('static', filename='logo-kemenag.png') }}"
+            alt="Logo Kemenag Malinau"
+            class="logo-kemenag"
+            width="70"
+        >
+
+        <div class="judul-kemenag">
+            <h2>Helpdesk IT</h2>
+            <span>Kementerian Agama Kabupaten Malinau</span>
+        </div>
+
+    </div>
+
+    <!-- NAVBAR / MENU -->
+    <div class="menu">
+
+        <a href="/">Beranda</a>
+
+        <a href="/laporan">
+            Buat Laporan
+        </a>
+
+        <a href="/admin">
+            Admin
+        </a>
+
+        <!-- TOMBOL LOGOUT -->
+        <a href="/logout">
+            Logout
+        </a>
+
+    </div>
+</nav>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+    <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>  
+      
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>

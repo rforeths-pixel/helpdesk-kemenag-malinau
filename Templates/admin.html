@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="admin-container">
+
+    <h2>Dashboard Admin Helpdesk</h2>
+
+    <div class="table-container">
+
+        <table>
+
+            <thead>
+
+                <tr>
+                    <th>ID</th>
+                    <th>Pelapor</th>
+                    <th>Kategori</th>
+                    <th>Judul Masalah</th>
+                    <th>Prioritas</th>
+                    <th>Status</th>
+                    <th>Tanggal</th>
+                    <th>Aksi</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+                
+                {% for item in laporan %}
+
+                <tr>
+
+                   <td>{{ loop.index }}</td>
+                   
+                    <td>{{ item.nama }}</td>
+
+                    <td>{{ item.kategori }}</td>
+
+                    <td>{{ item.judul }}</td>
+
+                    <td>
+                        {{ item.prioritas }}
+                    </td>
+
+                    <td>
+                        <span class="status">
+                            {{ item.status }}
+                        </span>
+                    </td>
+
+                    <td>
+                        {{ item.tanggal }}
+                    </td>
+
+                    <td>
+
+                        <form
+                            method="POST"
+                            action="/update_status/{{ item.id }}"
+                        >
+
+                            <select name="status">
+
+                                <option value="Menunggu">
+                                    Menunggu
+                                </option>
+
+                                <option value="Diproses">
+                                    Diproses
+                                </option>
+
+                                <option value="Selesai">
+                                    Selesai
+                                </option>
+
+                            </select>
+
+                            <button type="submit" class="btn-update">
+                                Update
+                            </button>
+
+                        </form>
+
+                        <!-- Tombol Hapus Laporan -->
+                        <form
+                            method="POST"
+                            action="/hapus_laporan/{{ item.id }}"
+                            onsubmit="return confirm('Apakah Anda yakin ingin menghapus laporan ini?');"
+                        >
+                            <button type="submit" class="btn-hapus">
+                                Hapus
+                            </button>
+
+
+                        </form>
+
+                        
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+
+
+{% endblock %}

@@ -10,96 +10,102 @@
           href="{{ url_for('static', filename='style.css') }}">
 </head>
 
-<script>
-    setTimeout(function () {
-        const alerts = document.querySelectorAll(".floating-alert");
-
-        alerts.forEach(function (alert) {
-            alert.remove();
-        });
-    }, 5000);
-</script>
 <body>
+
     <!-- Notifikasi mengambang -->
-<div id="flash-container">
-    {% with messages = get_flashed_messages(with_categories=true) %}
-        {% if messages %}
-            {% for category, message in messages %}
-                <div class="floating-alert {{ category }}">
-                    {{ message }}
-                </div>
-            {% endfor %}
-        {% endif %}
-    {% endwith %}
-</div>
+    <div id="flash-container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="floating-alert {{ category }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
 
-<div class="login-page">
+    <div class="login-page">
 
-    <div class="login-container">
+        <div class="login-container">
 
-        <!-- LOGO -->
-       <div class="logo-container">
-    <img src="{{ url_for('static', filename='logo-kemenag.png') }}"
-         alt="Logo Kemenag Malinau">
-</div>
+            <!-- LOGO KEMENAG -->
+            <div class="logo-container">
+                <img
+                    src="{{ url_for('static', filename='Logo-Kemenag.png') }}"
+                    alt="Logo Kemenag Malinau"
+                    class="logo-kemenag"
+                >
+            </div>
 
-        <!-- JUDUL -->
-        <div class="login-header">
-            <h1>Helpdesk IT</h1>
+            <!-- JUDUL -->
+            <div class="login-header">
+                <h1>Helpdesk IT</h1>
 
-            <p>
-                Kementerian Agama Kabupaten Malinau
+                <p>
+                    Kementerian Agama Kabupaten Malinau
+                </p>
+
+                <span>
+                    Silakan login untuk mengakses halaman.
+                </span>
+            </div>
+
+            <!-- FORM LOGIN -->
+            <form method="POST" class="login-form">
+
+                <label for="username">
+                    Username
+                </label>
+
+                <input
+                    type="text"
+                    id="username"
+                    name="username"
+                    placeholder="Masukkan username"
+                    required
+                >
+
+                <label for="password">
+                    Password
+                </label>
+
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="Masukkan password"
+                    required
+                >
+
+                <button type="submit" class="login-button">
+                    Login
+                </button>
+
+            </form>
+
+            <!-- DAFTAR -->
+            <p class="register-text">
+                Belum mempunyai akun?
+                <a href="{{ url_for('register') }}">
+                    Daftar akun
+                </a>
             </p>
 
-            <span>
-                Silakan login untuk mengakses halaman.
-            </span>
         </div>
-
-        <!-- FORM LOGIN -->
-        <form method="POST" class="login-form">
-
-            <label for="username">
-                Username
-            </label>
-
-            <input
-                type="text"
-                id="username"
-                name="username"
-                placeholder="Masukkan username"
-                required
-            >
-
-            <label for="password">
-                Password
-            </label>
-
-            <input
-                type="password"
-                id="password"
-                name="password"
-                placeholder="Masukkan password"
-                required
-            >
-
-            <button type="submit" class="login-button">
-                Login
-            </button>
-
-        </form>
-
-        <!-- DAFTAR -->
-        <p class="register-text">
-            Belum mempunyai akun?
-            <a href="{{ url_for('register') }}">
-                Daftar akun
-            </a>
-        </p>
 
     </div>
 
-</div>
+    <!-- Script notifikasi -->
+    <script>
+        setTimeout(function () {
+            const alerts = document.querySelectorAll(".floating-alert");
+
+            alerts.forEach(function (alert) {
+                alert.remove();
+            });
+        }, 5000);
+    </script>
 
 </body>
 </html>

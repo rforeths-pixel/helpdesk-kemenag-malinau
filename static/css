@@ -63,4 +63,23 @@ nav {
 
 .menu a:hover {
     text-decoration: underline;
+}.logo-container {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 25px;
+    border: 4px solid #f5c400;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.logo-container img {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    display: block;
 }

@@ -537,36 +537,6 @@ def init_db():
     conn.close()
 
 
-@app.route("/")
-def index():
-    conn = get_db_connection()
-
-    total = conn.execute(
-        "SELECT COUNT(*) FROM laporan"
-    ).fetchone()[0]
-
-    menunggu = conn.execute(
-        "SELECT COUNT(*) FROM laporan WHERE status = 'Menunggu'"
-    ).fetchone()[0]
-
-    diproses = conn.execute(
-        "SELECT COUNT(*) FROM laporan WHERE status = 'Diproses'"
-    ).fetchone()[0]
-
-    selesai = conn.execute(
-        "SELECT COUNT(*) FROM laporan WHERE status = 'Selesai'"
-    ).fetchone()[0]
-
-    conn.close()
-
-    return render_template(
-        "index.html",
-        total=total,
-        menunggu=menunggu,
-        diproses=diproses,
-        selesai=selesai
-    )
-
 
 @app.route("/laporan", methods=["GET", "POST"])
 def laporan():
